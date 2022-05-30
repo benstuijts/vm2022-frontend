@@ -4,6 +4,7 @@ import "../styles.css";
 import { useEffect } from "react";
 
 import Navbar from "../components/General/Navbar";
+import Footer from "../components/General/Footer";
 
 function MyApp({ Component, pageProps }) {
     // Loading Bootstrap javascript in every page
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }) {
         <>
             <Navbar />
             <Component {...pageProps} />
+            <Footer />
         </>
     );
 }

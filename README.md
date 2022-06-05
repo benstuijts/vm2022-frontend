@@ -1,5 +1,35 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
 
+
+FASE 1
+[ ] Prototype Backend API
+[x] - blog (2x)
+[x] - house schema
+[ ] - house: actuele aanbod
+[x] = message (2x)
+[ ] Prototype Frontend local
+[ ] - account Netlify in orde
+[ ] - Next SEO
+[x] - navbar + footer
+[x] - message component op homepage
+[x] - dummy tekst op homepage
+
+FASE 2
+[ ] Prototype Frontend op Netlify
+
+FASE 3
+[ ] API backend testen 
+[ ] Frontend: /contact route & form
+[ ] Frontend: /inschrijven route & form
+
+FASE 4
+[ ] Frontend: /blog/index.js
+[ ] Frontend: /blog/[slug].js
+[ ] Frontend: /aanbod/index.js
+[ ] Frontend: /aanbod/[adres].js
+
+
+
 ## Getting Started
 
 First, run the development server:

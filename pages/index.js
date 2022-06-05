@@ -1,8 +1,47 @@
 import Head from 'next/head'
+import sanityClient from '../client';
+import { useState, useEffect } from 'react';
 
-
+import { Message } from '../components';
+import client from '../client';
 
 export default function Home() {
+
+  const [ message, setMessage ] = useState(null);
+
+  let PROJECT_ID = "4g1muh35";
+  let DATASET = "production";
+
+  let QUERY = encodeURIComponent('*[_type=="message"]');
+  let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
+
+const [ state, setState ] = useState({
+  categories: [],
+  error: '',
+  loading: true
+});
+
+const { loading, error, categories } = state;
+
+useEffect(
+  () => {
+    const fetchData = async () => {
+      try {
+        const data = await client.fetch(`*[_type == "author"]`);
+        setState({
+          categories: data, loading: false, 
+        })
+      } catch(err) {
+        setState({
+          loading: false, error: err.message
+        })
+      }
+    }
+    fetchData();
+  }, []
+)
+  
+
   return (
     <div className="container">
       <Head>
@@ -12,201 +51,61 @@ export default function Home() {
 
       <main>
         
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+        <div>
+          <h1>LOADING STATUS</h1>
+          { loading && (<h2>LOADING</h2>)}
+          { !loading && (<h2>LOADING READY</h2>)}
+        </div>
+        <div>
+          <h1>ERROR STATUS</h1>
+          { error && (<h2>{error}</h2>)}
+          { !error && (<h2>No error</h2>)}
+        </div>
+        <div>
+          <h1>DATA # records: {categories.length}</h1>
+          { categories && (<code>{JSON.stringify(categories,null, 3)}</code>)}
+        </div>
+        <div>
+          <hr/>
+          {categories && categories.map((data)=><div><code key = {data._id}>{JSON.stringify(data)}</code><hr/></div>)}
+        </div>
+
+
+        <h1 className="title mt-5">
+          Welcome to VM website
         </h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tristique nibh at dui consequat sagittis. Mauris bibendum vulputate imperdiet. Donec libero dolor, euismod ac dolor eu, interdum sodales lectus. Vivamus posuere massa vel sollicitudin porta. In at efficitur turpis. Sed consectetur commodo tempus. Morbi tincidunt posuere eros, sit amet volutpat nulla mattis at. Donec id libero sapien. Cras interdum, arcu in pharetra laoreet, massa magna bibendum elit, at facilisis nulla arcu eget est. In vehicula eu nisi vitae semper.
+
         </p>
 
-        <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+        <Message body = { message && message}/>
 
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        <p>
+        Suspendisse imperdiet non orci eu fringilla. Nullam pretium interdum suscipit. Nulla tempus mauris non neque semper, id dictum tellus hendrerit. Aliquam accumsan posuere ligula eget aliquam. In hac habitasse platea dictumst. Suspendisse potenti. Nullam rhoncus nisl quis rutrum pretium. Cras cursus dui ac felis finibus varius. Aenean pulvinar convallis eros, non fringilla odio tempor ac. Donec porta porttitor purus, hendrerit placerat mauris. Aenean interdum lacus ac mollis fringilla. Maecenas lobortis dapibus feugiat.
+        </p>
 
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+        <p>
+        Integer diam urna, rhoncus suscipit aliquet a, posuere maximus nibh. Nunc id metus ac risus faucibus molestie vel a nisi. Duis ultrices enim a felis vehicula, non suscipit turpis mollis. Maecenas commodo felis eleifend urna maximus dapibus. Etiam a vestibulum quam. Pellentesque at sagittis lorem. Maecenas nec ullamcorper turpis. Sed at molestie odio. Vivamus facilisis vitae est vel ultrices. Integer ipsum libero, venenatis ac euismod quis, rhoncus at ligula. Aliquam molestie felis suscipit turpis volutpat, eu elementum felis tempor. Aenean bibendum convallis facilisis. Nulla vitae ipsum finibus, semper lacus et, gravida sapien. Praesent dictum tortor leo, dapibus posuere elit congue quis.
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+
+        </p>
+        <p>
+        Aenean augue nisi, condimentum eu lobortis eu, suscipit vel ex. Aenean sodales hendrerit erat vitae blandit. Vestibulum tristique massa a magna hendrerit pharetra dictum eget est. Cras eu lacus vitae urna tempor imperdiet eget sed libero. Duis feugiat, libero vel congue tempor, purus sem hendrerit sapien, sit amet efficitur mauris diam ut ipsum. Duis auctor fermentum interdum. Sed congue commodo pellentesque. Aenean eleifend rhoncus mauris in sollicitudin. Duis ut mi felis. Aliquam id tincidunt quam. Suspendisse potenti. Aliquam commodo vehicula erat eget viverra. Vestibulum vitae quam vitae nisi faucibus faucibus. Praesent iaculis felis sed nulla aliquet placerat. Etiam sed consequat ligula.
+
+        </p>
+        
+        <p>
+        Fusce fringilla scelerisque risus non aliquet. Morbi sapien nulla, tincidunt volutpat elementum eget, sollicitudin vel lacus. Maecenas auctor at nulla vitae placerat. In tempor ultrices efficitur. Phasellus ullamcorper, turpis id ultricies egestas, mauris tellus egestas turpis, sit amet scelerisque dolor leo ac ex. Donec quis nisl non elit efficitur consequat. Nullam a venenatis justo, ut ultrices sapien. Integer sit amet semper diam, sed egestas lectus. Quisque sed ante lorem. Fusce dictum pulvinar elit quis suscipit. Ut sagittis ligula in massa efficitur, a imperdiet est consectetur. Nunc non eros ligula. Cras et risus at ipsum dapibus vestibulum vel vitae orci. Aenean egestas sodales blandit.
+
+        </p>
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
+      
 
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          padding: 0 0.5rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 4rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-
-          max-width: 800px;
-          margin-top: 3rem;
-        }
-
-        .card {
-          margin: 1rem;
-          flex-basis: 45%;
-          padding: 1.5rem;
-          text-align: left;
-          color: inherit;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .card:hover,
-        .card:focus,
-        .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
-        }
-
-        .card h3 {
-          margin: 0 0 1rem 0;
-          font-size: 1.5rem;
-        }
-
-        .card p {
-          margin: 0;
-          font-size: 1.25rem;
-          line-height: 1.5;
-        }
-
-        .logo {
-          height: 1em;
-        }
-
-        @media (max-width: 600px) {
-          .grid {
-            width: 100%;
-            flex-direction: column;
-          }
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
+      
     </div>
   )
 }

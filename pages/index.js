@@ -2,45 +2,9 @@ import Head from 'next/head'
 import sanityClient from '../client';
 import { useState, useEffect } from 'react';
 
-import { Message } from '../components';
 import client from '../client';
 
 export default function Home() {
-
-  const [ message, setMessage ] = useState(null);
-
-  let PROJECT_ID = "4g1muh35";
-  let DATASET = "production";
-
-  let QUERY = encodeURIComponent('*[_type=="message"]');
-  let URL = `https://${PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/${DATASET}?query=${QUERY}`;
-
-const [ state, setState ] = useState({
-  categories: [],
-  error: '',
-  loading: true
-});
-
-const { loading, error, categories } = state;
-
-useEffect(
-  () => {
-    const fetchData = async () => {
-      try {
-        const data = await client.fetch(`*[_type == "author"]`);
-        setState({
-          categories: data, loading: false, 
-        })
-      } catch(err) {
-        setState({
-          loading: false, error: err.message
-        })
-      }
-    }
-    fetchData();
-  }, []
-)
-  
 
   return (
     <div className="container">
@@ -52,24 +16,9 @@ useEffect(
       <main>
         
         <div>
-          <h1>LOADING STATUS</h1>
-          { loading && (<h2>LOADING</h2>)}
-          { !loading && (<h2>LOADING READY</h2>)}
+          <h1>WELKOM</h1>
+          
         </div>
-        <div>
-          <h1>ERROR STATUS</h1>
-          { error && (<h2>{error}</h2>)}
-          { !error && (<h2>No error</h2>)}
-        </div>
-        <div>
-          <h1>DATA # records: {categories.length}</h1>
-          { categories && (<code>{JSON.stringify(categories,null, 3)}</code>)}
-        </div>
-        <div>
-          <hr/>
-          {categories && categories.map((data)=><div><code key = {data._id}>{JSON.stringify(data)}</code><hr/></div>)}
-        </div>
-
 
         <h1 className="title mt-5">
           Welcome to VM website
@@ -81,7 +30,7 @@ useEffect(
 
         </p>
 
-        <Message body = { message && message}/>
+        
 
         <p>
         Suspendisse imperdiet non orci eu fringilla. Nullam pretium interdum suscipit. Nulla tempus mauris non neque semper, id dictum tellus hendrerit. Aliquam accumsan posuere ligula eget aliquam. In hac habitasse platea dictumst. Suspendisse potenti. Nullam rhoncus nisl quis rutrum pretium. Cras cursus dui ac felis finibus varius. Aenean pulvinar convallis eros, non fringilla odio tempor ac. Donec porta porttitor purus, hendrerit placerat mauris. Aenean interdum lacus ac mollis fringilla. Maecenas lobortis dapibus feugiat.

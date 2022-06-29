@@ -1,17 +1,30 @@
 import Link from "next/link";
 
 const Footer = () => {
-    const { ADRES } = process.env;
-    const { POSTCODE } = process.env;
-    const { WOONPLAATS } = process.env;
-    const { API_URL } = process.env;
-    const { CALL_ME_URL } = process.env;
-    const { EMAIL_ME_URL } = process.env;
-    const { KVK } = process.env;
-    const { IBAN } = process.env;
-    const { BTW } = process.env;
-    const { FB_URL } = process.env;
-    const { PHONE_NUMBER } = process.env;
+
+    // const ADRES = "adres",
+    // POSTCODE = "pc",
+    // WOONPLAATS = "Hellevoetsluis",
+    // PHONE_NUMBER = "0181 89931",
+    // CALL_ME_URL = "phone:",
+    // EMAIL_ME_URL = "email",
+    // KVK = "kvk",
+    // IBAN = "iban",
+    // BTW = "btw";
+
+    
+
+    const { NEXT_PUBLIC_ADRES } = process.env;
+    const { NEXT_PUBLIC_POSTCODE } = process.env;
+    const { NEXT_PUBLIC_WOONPLAATS } = process.env;
+    
+    const { NEXT_PUBLIC_CALL_ME_URL } = process.env;
+    const { NEXT_PUBLIC_EMAIL_ME_URL } = process.env;
+    const { NEXT_PUBLIC_KVK } = process.env;
+    const { NEXT_PUBLIC_IBAN } = process.env;
+    const { NEXT_PUBLIC_BTW } = process.env;
+    const { NEXT_PUBLIC_FB_URL } = process.env;
+    const { NEXT_PUBLIC_PHONE_NUMBER } = process.env;
 
     return (
         <footer className="container-fluid bg-dark">
@@ -74,14 +87,14 @@ const Footer = () => {
 
                         <p className="strong">Voorne Makelaars en Advies</p>
                         <p>
-                            {ADRES} <br />
-                            {POSTCODE} {WOONPLAATS} <br />
-                            {PHONE_NUMBER}
+                            {NEXT_PUBLIC_ADRES} <br />
+                            {NEXT_PUBLIC_POSTCODE} {NEXT_PUBLIC_WOONPLAATS} <br />
+                            {NEXT_PUBLIC_PHONE_NUMBER}
                         </p>
                         <div>
                             <div>
                                 <a
-                                    href={CALL_ME_URL}
+                                    href={NEXT_PUBLIC_CALL_ME_URL}
                                     className="nounderline text-white"
                                 >
                                     &#128222; Bel ons
@@ -90,7 +103,7 @@ const Footer = () => {
 
                             <div>
                                 <a
-                                    href={EMAIL_ME_URL}
+                                    href={NEXT_PUBLIC_EMAIL_ME_URL}
                                     className="nounderline text-white"
                                 >
                                     &#128231; Mail ons
@@ -98,9 +111,9 @@ const Footer = () => {
                             </div>
                         </div>
                         <p>
-                            KVK: {KVK} <br />
-                            IBAN: {IBAN} <br />
-                            BTW: {BTW}
+                            KVK: {NEXT_PUBLIC_KVK} <br />
+                            IBAN: {NEXT_PUBLIC_IBAN} <br />
+                            BTW: {NEXT_PUBLIC_BTW}
                         </p>
                     </div>
                 </div>

@@ -1,40 +1,89 @@
-import Head from 'next/head'
+import Head from "next/head";
+import { NextSeo } from "next-seo";
+import Link from "next/link";
+
+const SEO = {};
+
+/* Page Components */
+import Header from "components/General/Header";
+import WaaromVM from "../components/Home/WaaromVM";
+import AangeslotenBij from 'components/General/AangeslotenBij';
+import NieuwsteAanbod from 'components/Home/NieuwsteAanbod';
+import Woondossier from "components/General/Woondossier";
+import Energielabel from "../components/General/Energielabel";
+import Reviews from "components/General/Reviews";
+import WieIsBenShort from "components/Home/WieIsBenShort";
 
 export default function Home() {
+    return (
+        <>
+            <span id="top-page"></span>
 
-  
+            <Header
+                title="Makelaar Hellevoetsluis"
+                subtitle="Voorne Makelaars"
+                lead={`
+        Bij het aan- of verkopen van een woning komt veel kijken. Zeker in deze markt waar de vraag naar woningen groot is en het aanbod steeds kleiner. Maar hoe verzilver je deze kans? En met welke verkoopplan behaal je de hoogste opbrengst? En hoe zit het nu eigenlijk juridisch gezien? Dit zijn allemaal vragen waar wij het antwoord op hebben.
 
-  return (
-    <>
-    
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+        `}
+                CTA={{
+                    href: "/waardebepaling#waardebepaling-aanvragen",
+                    text: "plan gratis waardebepaling in",
+                }}
+            />
 
-      <main>
-        
-        <div>
-          <h1>WELKOM</h1>
-          
-        </div>
+            <WaaromVM />
 
-        <h1 className="title mt-5">
-          Welcome to VM website
-        </h1>
+            <section id="introductie" className = "bg-white pt-3 pb-3">
+                <div className="container">
+                    <h2>
+                        Makelaar Hellevoetsluis voor het aankopen en verkopen
+                        van uw woning
+                    </h2>
+                    <p>
+                        Op zoek naar een makelaar Hellevoetsluis om uw
+                        droomwoning te kopen of het maximale uit de verkoop van
+                        uw woning te halen? Wij zijn actief in en rondom
+                        Hellevoetsluis. Doordat wij deze regio goed kennen,
+                        weten wij precies wat er nodig is om u bij te staan bij
+                        de aan- en verkoop van uw woning. Daarnaast zijn wij
+                        altijd op de hoogte van het nieuwste aanbod waardoor wij
+                        snel kunnen schakelen.
+                    </p>
+                    <p>
+                        Door onze brede kennis en ervaring, weten wij iedereen
+                        goed te helpen en adviseren. Naast onderhandelingen en
+                        bezichtigingen, beschikken wij ook over de nodige kennis
+                        op gebied van bouwkunde, juridische zaken en
+                        regelgeving. Dit maakt dat wij een compleet pakket aan
+                        diensten kunnen aanbieden waarbij u volledig ontzorgt
+                        wordt. Vooral in een tijd waarin woningen schaars zijn
+                        en er snel gehandeld moet worden, zorgt dit voor een
+                        complete service voor onze klanten
+                    </p>
+                    <p>
+                        Bent u benieuwd wat wij voor u kunnen betekenen of wat
+                        uw woning waard is? Neem contact met ons op voor een
+                        gratis en vrijblijvende waardebepaling. Daarnaast
+                        ontvangt u het nodige verkoopadvies, zodat u precies
+                        weet waar u aan toe bent wanneer u uw woning gaat
+                        verkopen!
+                    </p>
+                </div>
+            </section>
 
-        <p>
-          {process.env.NEXT_PUBLIC_ADRES}
-        </p>
+            <AangeslotenBij />
 
-        
-      </main>
+            <NieuwsteAanbod woningen={[]} />
+            
+            <Woondossier />
+            <Energielabel />
+            
+            <Reviews />
 
-      
+            <WieIsBenShort />
 
-      
-    </div>
-    </>
-  )
+
+        </>
+    );
 }

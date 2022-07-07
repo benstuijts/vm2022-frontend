@@ -1,3 +1,95 @@
 body {
     background: lightgrey;
 }
+
+/* COLORS */
+
+body {
+    --primary: #004B70;
+    --primary-light: #f0f6fb;
+    --primary-dark: #153349;
+    --primary-with-text: white; 
+  
+    --secondary: #84BFCB;
+    --secondary-light: #f6d8ac;
+    --secondary-dark: #F96714;
+    --secondary-with-text: azure;
+  
+    --tertiary: #c4c4c4;
+    --tertiary-light: #ddd;
+    --tertiary-dark: #666;
+    --tertiary-with-text: black;
+  
+    
+  }
+  .bg-primary { background: #004B70 !important; color: white;}
+  .bg-primary-transparant {
+    background-color: rgba(0, 75, 112, 0.7);
+    
+  }
+  .bg-grey { background: #eee; color: black; }
+  .bg-white { background: white; }
+  .text-primary {
+    color:  #004B70!important;
+  }
+  .text-highlight {
+    color: #F96714;
+  }
+  .text-black {
+    color: black;
+  }
+  .text-grey { color: #ccc; }
+  
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+  }
+  
+  section { margin-top: 3rem; margin-bottom: 3rem;}
+  
+  .nounderline {
+    text-decoration: none !important
+  }
+  
+  .btn-primary {
+    background: #004B70 !important; color: white !important;
+  }
+  .btn-action {
+    background: #F96714 !important; color: white !important; 
+  }
+  .btn-outline-primary
+  { border-color:  #004B70 !important; color: #004B70 !important;}
+  .btn-outline-primary:hover {
+    background: #004B70 !important; color: white !important;
+  }
+  .text-decoration-none,
+  .text-decoration-none:hover {
+    color: black;
+  }
+
+section { margin-top: 3rem; margin-bottom: 3rem;}
+
+/* Header component */
+
+.HH_jumbotron {
+    position: relative;
+    background: url('/img/home/voorne-makelaars-hellevoetsluis-header-small.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .HH_jumbotron > .HH_overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 75, 112, 0.7);
+    z-index: 1;
+  }
+  
+  .HH_jumbotron > .HH_inner {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding-top: 24px;padding-bottom: 24px;
+  }

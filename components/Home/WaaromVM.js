@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { urlFor } from "../../sanity";
 
 const waaromVM = ({ woning = null }) => {
     const { API_URL } = process.env;
@@ -11,10 +12,8 @@ const waaromVM = ({ woning = null }) => {
                             <Link href={`/aanbod/${woning.slug}`}>
                             <div className="card">
                                 <img
-                                    src={
-                                        woning.hoofdfoto &&
-                                        `${API_URL}${woning.hoofdfoto.formats.small.url}`
-                                    }
+                                    src = { urlFor(woning.mainImage) }
+                                    
                                     className="card-img-top"
                                     loading="lazy"
                                     alt={woning.adres}

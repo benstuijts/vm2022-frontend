@@ -1,5 +1,5 @@
 body {
-    background: lightgrey;
+    background: #eee;
 }
 
 /* COLORS */
@@ -68,6 +68,9 @@ body {
 
 section { margin-top: 3rem; margin-bottom: 3rem;}
 
+
+
+
 /* Header component */
 
 .HH_jumbotron {
@@ -93,3 +96,30 @@ section { margin-top: 3rem; margin-bottom: 3rem;}
     color: white;
     padding-top: 24px;padding-bottom: 24px;
   }
+
+  /* NieuwsteAanbod component */
+.NA_img_wrap_header {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 75, 112, 0.9);
+  padding-top: 12px; padding-right: 12px;
+}
+.NA_img_wrap_header p {
+    font-size: 0.8rem;
+    width: 100%;
+    margin-left: 12px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.NA_img_wrap_status {
+  position: absolute;
+  left: 8px; top: 8px;
+  background:#F96714;
+}

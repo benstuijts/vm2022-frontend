@@ -7,14 +7,18 @@ const SEO = {};
 /* Page Components */
 import Header from "components/General/Header";
 import WaaromVM from "../components/Home/WaaromVM";
-import AangeslotenBij from 'components/General/AangeslotenBij';
-import NieuwsteAanbod from 'components/Home/NieuwsteAanbod';
+import AangeslotenBij from "components/General/AangeslotenBij";
+import NieuwsteAanbod from "components/Home/NieuwsteAanbod";
 import Woondossier from "components/General/Woondossier";
 import Energielabel from "../components/General/Energielabel";
 import Reviews from "components/General/Reviews";
 import WieIsBenShort from "components/Home/WieIsBenShort";
+import Blogs from "components/Home/Blogs";
 
-export default function Home() {
+/* Sanity.io */
+import { sanityClient, urlFor } from "../sanity";
+
+export default function Home({ woningen = [], blogs = [] }) {
     return (
         <>
             <span id="top-page"></span>
@@ -32,9 +36,9 @@ export default function Home() {
                 }}
             />
 
-            <WaaromVM />
+            <WaaromVM woning={woningen[woningen.length - 1]} />
 
-            <section id="introductie" className = "bg-white pt-3 pb-3">
+            <section id="introductie" className="bg-white pt-3 pb-3">
                 <div className="container">
                     <h2>
                         Makelaar Hellevoetsluis voor het aankopen en verkopen
@@ -74,16 +78,38 @@ export default function Home() {
 
             <AangeslotenBij />
 
-            <NieuwsteAanbod woningen={[]} />
-            
+            <NieuwsteAanbod woningen={woningen} />
+
+            <Blogs blogs={blogs} />
+
             <Woondossier />
             <Energielabel />
-            
+
             <Reviews />
 
             <WieIsBenShort />
-
-
         </>
     );
 }
+
+export const getServerSideProps = async () => {
+    const query1 = '*[ _type == "house"]';
+    const query2 = '*[ _type == "blog"]';
+    const woningen = await sanityClient.fetch(query1);
+    const blogs = await sanityClient.fetch(query2);
+
+    return {
+        props: {
+            woningen: checkResponse(woningen),
+            blogs: checkResponse(blogs),
+        },
+    };
+};
+
+const checkResponse = (res) => {
+    if (!res.length) {
+        return [];
+    } else {
+        return res;
+    }
+};

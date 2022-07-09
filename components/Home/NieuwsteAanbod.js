@@ -4,6 +4,7 @@ import {
     sortByPrice,
     sortByStatusAndId,
 } from "components/General/sortConstructor";
+import { urlFor } from "../../sanity";
 
 const _samenstelling = [
     { aanbod: 6, ov: 0, verkocht: 0 },
@@ -97,10 +98,8 @@ const CardWoning = ({ woning = {} }) => {
                 <div className="card h-100">
                     <div style={{ position: "relative" }} className="">
                         <img
-                            src={
-                                woning.hoofdfoto &&
-                                `${API_URL}${woning.hoofdfoto.formats.small.url}`
-                            }
+                            src = { urlFor(woning.mainImage) }
+
                             className="card-img-top"
                             loading="lazy"
                             alt={woning.adres}
@@ -116,10 +115,10 @@ const CardWoning = ({ woning = {} }) => {
                     <ul className="list-group list-group-flush">
                         <li className="list-group-item d-flex justify-content-between">
                             <p title="woonoppervlakte">
-                                &#127968; {woning.woonoppervlakte} m<sup>2</sup>
+                                &#127968; {woning.wonen} m<sup>2</sup>
                             </p>
                             <p title="oppervlakte perceel">
-                                &#127969; {woning.perceeloppervlakte} m
+                                &#127969; {woning.perceel} m
                                 <sup>2</sup>
                             </p>
                             <p title="aantal slaapkamers">

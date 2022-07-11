@@ -1,8 +1,33 @@
-import Head from "next/head";
+/* SEO */
 import { NextSeo } from "next-seo";
-import Link from "next/link";
+const SEO = {
+    title: "Makelaar Hellevoetsluis - Voorne Makelaars",
+    description:
+        "Voorne Makelaars is makelaar uit Hellevoetsluis en biedt een complete dienstverlening voor koper en verkoper: Begeleiding bij de verkoop & aankoop, aanvragen energielabel, onafhankelijk financieel advies, taxaties, bouwkundige keuring en een klusbedrijf.",
+    canonical: "https://www.voornemakelaars.nl",
 
-const SEO = {};
+    openGraph: {
+        title: "Op zoek naar makelaar in Hellevoetsluis: Voorne Makelaars",
+        description:
+            "Voorne Makelaars is makelaar in Hellevoetsluis en biedt een complete dienstverlening voor koper en verkoper: Begeleiding bij de verkoop & aankoop, aanvragen energielabel, onafhankelijk financieel advies, taxaties, bouwkundige keuring en een klusbedrijf.",
+        url: "https://voornemakelaars.nl",
+        type: "article",
+        article: {
+            publishedTime: "15-12-2020",
+            modifiedTime: "18-12-2020",
+            authors: ["Ben Stuijts - makelaar Hellevoetsluis"],
+            tags: [
+                "makelaar",
+                "makelaar-hellevoetsluis",
+                "waardebepaling",
+                "aankoopmakelaar",
+                "verkoopmakelaar",
+                "woning kopen",
+            ],
+        },
+        images: [],
+    },
+};
 
 /* Page Components */
 import Header from "components/General/Header";
@@ -21,6 +46,7 @@ import { sanityClient, urlFor } from "../sanity";
 export default function Home({ woningen = [], blogs = [] }) {
     return (
         <>
+            <NextSeo {...SEO }/>
             <span id="top-page"></span>
 
             <Header
@@ -93,6 +119,7 @@ export default function Home({ woningen = [], blogs = [] }) {
 }
 
 export const getServerSideProps = async () => {
+
     const query1 = '*[ _type == "house"]';
     const query2 = '*[ _type == "blog"]';
     const woningen = await sanityClient.fetch(query1);

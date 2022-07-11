@@ -18,8 +18,8 @@
     "next": "12.1.6",
     "next-sanity": "^0.6.0",
     "next-seo": "^5.4.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-multi-carousel": "^2.8.2",
     "voorne-makelaars-cl": "^1.1.0"
   }

@@ -1,6 +1,9 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles.css";
 
+import { DefaultSeo } from 'next-seo';
+import SEO from '../next-seo.config';
+
 import { useEffect } from "react";
 
 import Navbar from "../components/General/Navbar";
@@ -14,6 +17,7 @@ function MyApp({ Component, pageProps }) {
 
     return (
         <>
+            <DefaultSeo {...SEO} />
             <Navbar />
             <Component {...pageProps} />
             <Footer />

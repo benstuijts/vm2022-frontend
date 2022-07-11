@@ -16,13 +16,17 @@ const _samenstelling = [
     { aanbod: 0, ov: 3, verkocht: 3 },
 ];
 
-const NieuwsteAanbod = ({ woningen = [], h2 = "Nieuwste aanbod", id = "nieuwste-aanbod" }) => {
+const NieuwsteAanbod = ({
+    woningen = [],
+    h2 = "Nieuwste aanbod",
+    id = "nieuwste-aanbod",
+}) => {
     const data = woningen.filter((w) => w.status === 0 || w.status === 1);
 
     const byStatus = (a, b) => a.status - b.status;
 
     let aantalAanbod = woningen.filter((w) => w.status === 0).length;
-    aantalAanbod = (aantalAanbod > 6 ) ? 6 : aantalAanbod;
+    aantalAanbod = aantalAanbod > 6 ? 6 : aantalAanbod;
 
     const samenstelling = _samenstelling.filter(
         (o) => o.aanbod === aantalAanbod
@@ -43,7 +47,6 @@ const NieuwsteAanbod = ({ woningen = [], h2 = "Nieuwste aanbod", id = "nieuwste-
     let _addExtra = [];
 
     if ([..._aanbod, ..._ov, ..._verkocht].length < 6) {
-        
         _addExtra = woningen
             .filter((w) => w.status === 2)
             .sort(sortByPrice)
@@ -59,7 +62,7 @@ const NieuwsteAanbod = ({ woningen = [], h2 = "Nieuwste aanbod", id = "nieuwste-
     return (
         <section className="container" id={id}>
             <h2>{h2}</h2>
-            
+
             <p>
                 <Link href="/aanbod">
                     <a className="btn btn-dark">
@@ -72,8 +75,8 @@ const NieuwsteAanbod = ({ woningen = [], h2 = "Nieuwste aanbod", id = "nieuwste-
                 {showcase
                     .sort(sortByStatusAndId)
                     .slice(0, 6)
-                    .map((woning) => (
-                        <CardWoning woning={woning} key={woning.id} />
+                    .map((woning, index) => (
+                        <CardWoning woning={woning} key={index} />
                     ))}
             </div>
             <a href="#top-page" className="btn btn-outline-primary mt-3">
@@ -98,8 +101,7 @@ const CardWoning = ({ woning = {} }) => {
                 <div className="card h-100">
                     <div style={{ position: "relative" }} className="">
                         <img
-                            src = { urlFor(woning.mainImage) }
-
+                            src={urlFor(woning.mainImage)}
                             className="card-img-top"
                             loading="lazy"
                             alt={woning.adres}
@@ -118,8 +120,7 @@ const CardWoning = ({ woning = {} }) => {
                                 &#127968; {woning.wonen} m<sup>2</sup>
                             </p>
                             <p title="oppervlakte perceel">
-                                &#127969; {woning.perceel} m
-                                <sup>2</sup>
+                                &#127969; {woning.perceel} m<sup>2</sup>
                             </p>
                             <p title="aantal slaapkamers">
                                 &#128164; {woning.slaapkamers}

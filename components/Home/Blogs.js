@@ -10,8 +10,8 @@ const Blogs = ({ blogs = [] }) => {
                 <hr className = "mb-5"/>
                 <div className = "row row-cols-xs-1 row-cols-sm-1 row-cols-md-2">
                     {
-                        blogs.map(blog=>(
-                            <Blog2 blog = {blog}/> 
+                        blogs.map((blog, index)=>(
+                            <Blog2 blog = {blog} key = {index}/> 
                         ))
                     }
                 </div>
@@ -27,7 +27,7 @@ const Blog2 = ({blog}) => (
                 <div className = "col-4">
                 <img 
                         src= { urlFor(blog.mainImage )} 
-                        class="img-fluid" 
+                        className="img-fluid" 
                         alt= {blog.title} />
                 </div>
                 <div className = "col-8">

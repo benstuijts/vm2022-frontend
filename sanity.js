@@ -1,8 +1,6 @@
 import { createClient } from "next-sanity"
 import createImageUrlBuilder from '@sanity/image-url'
 
-console.log(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID)
-
 const config = {
     /**
      * Find your project ID and dataset in `sanity.json` in your studio project.

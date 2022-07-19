@@ -46,7 +46,7 @@ import { sanityClient, urlFor } from "../sanity";
 export default function Home({ woningen = [], blogs = [] }) {
     return (
         <>
-            <NextSeo {...SEO }/>
+            <NextSeo {...SEO} />
             <span id="top-page"></span>
 
             <Header
@@ -119,7 +119,6 @@ export default function Home({ woningen = [], blogs = [] }) {
 }
 
 export const getServerSideProps = async () => {
-
     const query1 = '*[ _type == "house"]';
     const query2 = '*[ _type == "blog"]';
     const woningen = await sanityClient.fetch(query1);

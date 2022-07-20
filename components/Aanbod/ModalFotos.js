@@ -59,8 +59,6 @@ const Modal = ({ fotos = [], geselecteerdeFoto, setGeselecteerdeFoto }) => {
         }
     };
 
-    console.log("model laten zien");
-
     return (
         <div className="modal_backdrop" onClick={handleCloseModal}>
             <div

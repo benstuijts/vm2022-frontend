@@ -123,3 +123,115 @@ section { margin-top: 3rem; margin-bottom: 3rem;}
   left: 8px; top: 8px;
   background:#F96714;
 }
+
+/* image grid styles */
+.img-grid{
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 40px;
+}
+.img-grid > a {
+  color: black;
+  transition: all 0.5s ease-in-out;
+}
+.img-grid > a:hover {
+  transform: scale(1.05);
+}
+.img-grid-items-2 {
+  grid-template-columns: 1fr 1fr !important;
+}
+.img-grid-items-3 {
+  grid-template-columns: 1fr 1fr 1fr !important;
+}
+.img-grid-items-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr !important;
+}
+.img-wrap{
+  overflow: hidden;
+  height: 0;
+  padding: 50% 0;
+  /* padding controls height, will always be perfectly square regardless of width */
+  position: relative;
+  opacity: 1;
+  border: 1px solid rgba(0,0,0,.2);
+
+}
+.aanbod-img-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10;
+  background: rgba(1,1,1,0.4)
+}
+.img-wrap img{
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 150%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.img-wrap-header,
+.img-wrap-header-small {
+    position: absolute;
+    left: 0;
+    bottom: 2rem;
+    height: 4rem;
+    width: 100%;
+    background: rgba(0, 75, 112, 0.9);
+    padding: 10px 20px;
+}
+
+.img-wrap-header p {
+    font-size: 2rem;
+    color: white;
+    text-transform: uppercase;
+    text-align: right;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+.img-wrap-header-small p {
+  font-size: 1rem;
+  color: white;
+  text-transform: uppercase;
+    text-align: right;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+.img-wrap-footer {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  background: white;
+  
+}
+.img-wrap-footer p {
+    font-size: 0.9rem;
+}
+.img-wrap-footer p:first-child {
+    font-weight: 700;
+    padding-left: 8px;
+}
+.img-warp-label {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    height: 2rem;
+    background: #f0ad4e;
+    transform-origin: center center;
+    transform: rotate(-45deg) translateX(-60px) translateY(-30px)
+}
+.img-warp-label p {
+    font-size: 14px;
+    padding: 0px 90px;
+}

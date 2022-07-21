@@ -1,8 +1,8 @@
 import { PortableText } from "@portabletext/react";
 
-const Omschrijving = ({body}) => {
+const Omschrijving = ({omschrijving}) => {
     
-    if(body==null) return null;
+    if(omschrijving==null) return null;
 
     return (
         <div className = "omschrijving-wrapper">
@@ -10,7 +10,7 @@ const Omschrijving = ({body}) => {
                 <h4>Omschrijving</h4>
             </div>
             <div className = "omschrijving-body">
-            <PortableText value={post.body} />
+            <PortableText value={omschrijving} />
             </div>
         </div>
     )

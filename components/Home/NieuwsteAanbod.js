@@ -96,7 +96,7 @@ const CardWoning = ({ woning = {} }) => {
             : "verkocht";
 
     return (
-        <Link href={`/aanbod/${woning.slug}`}>
+        <Link href={`/aanbod/${woning.slug.current}`}>
             <a className="col mb-4 text-decoration-none">
                 <div className="card h-100">
                     <div style={{ position: "relative" }} className="">

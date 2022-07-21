@@ -32,7 +32,7 @@ const Fotos =  ({ fotos = [], setGeselecteerdeFoto }) => {
                             
 
                         return (
-                            <div className="img-wrap" key={foto.id}>
+                            <div className="img-wrap" key={index}>
                                 <img
                                     src={urlFor(foto)}
                                     alt="foto"
